@@ -44,7 +44,8 @@
                 <g:message code="ridTransaction.dateOfConsultation.label" default="Date Of Consultation"/>
                 <span class="required-indicator">*</span>
             </label>
-            <% def dateString = ridTransactionInstance?.dateOfConsultation ? new SimpleDateFormat("MM/dd/yyyy").format(ridTransactionInstance?.dateOfConsultation) : ""; %>
+            <%
+                def dateString = ridTransactionInstance?.dateOfConsultation ? new SimpleDateFormat("MM/dd/yyyy").format(ridTransactionInstance?.dateOfConsultation) : ""; %>
             <input type="text" name="dateOfConsultation" class="input-wide"
                    value="${dateString}" id="transaction-date" required=""/>
         </div>
@@ -360,7 +361,7 @@
 
 <div class="row-fluid">
     <div class="span2">
-        <div class="fieldcontain ${hasErrors(bea: ridTransactionInstance, field: 'department', 'error')}">
+        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'department', 'error')}">
             <label for="department">
                 <g:message code="ridTransaction.department.label" default="Department"/>
                 <a class="modal-label" data-toggle="modal"
@@ -373,6 +374,16 @@
                       from="${RidDepartment.list().sort { it.name }}" optionKey="id"
                       value="${ridTransactionInstance?.department?.id}" class="many-to-one input-create"/>
         </div>
+
+        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'testField', 'error')} ">
+            <label for="testField">
+                <g:message code="ridTransaction.staffPennkey.label" default="Test Field"/>
+                <span class="required-indicator">*</span>
+            </label>
+            <g:textField class="trans-user-input input-wide" name="testField" maxlength="100"
+                         required="" value="${ridTransactionInstance?.testField}"/>
+        </div>
+
     </div>
 </div>
 

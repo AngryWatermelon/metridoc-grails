@@ -387,6 +387,22 @@ class ValidateSpreadsheetService {
                     }
                     allEmpty = false
                     break
+                case 19:
+                    if (instance.get(i).trim().empty || instance.get(i).trim() == "free text") {
+                        spreadsheetErrors.add("Cons instance ${count+1}: Test Field Cannot be Empty at " + cellRef.formatAsString())
+                        noErrors = false
+                        break
+                    }
+                    else if (instance.get(i).trim().length() > 100) {
+                        spreadsheetErrors.add("Cons instance ${count+1}: Test Field Too Long at " + cellRef.formatAsString())
+                        noErrors = false
+                        allEmpty = false
+                    }
+                    else{
+                        allEmpty = false
+                    }
+
+                    break
                 default:
                     noErrors = false
             }

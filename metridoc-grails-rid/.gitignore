@@ -46,3 +46,12 @@
 *.DS_Store
 
 
+.slcache/
+grails-app/conf/hibernate/
+grails-app/realms/
+grails-app/utils/
+grails-app/views/layouts/
+lib/
+scripts/
+src/java/
+web-app/META-INF/
